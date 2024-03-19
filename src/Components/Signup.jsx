@@ -14,23 +14,13 @@ const Signup = () => {
   //signup
   const signupUser = async (e) => {
     e.preventDefault();
-
-    const promise = account.create(
-      uuidv4(),
-      user.email,
-      user.password,
-      user.name
-    );
-
-    promise.then(
-      function (response) {
-        console.log(response);
-        navigate("/profile");
-      },
-      function (error) {
-        console.log(error);
-      }
-    );
+    try {
+      const response = await account.create(uuidv4(), user.email, user.password, user.name);
+      console.log(response);
+      navigate("/profile");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -55,7 +45,6 @@ const Signup = () => {
                     autoComplete="name"
                     required
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={user.name}
                     onChange={(e) => {
                       setUser({ ...user, name: e.target.value });
                     }}
@@ -74,6 +63,7 @@ const Signup = () => {
                     id="email"
                     name="email"
                     type="email"
+                    autoComplete="username"
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     onChange={(e) => {
                       setUser({ ...user, email: e.target.value });
