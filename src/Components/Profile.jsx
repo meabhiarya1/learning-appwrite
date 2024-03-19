@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { account } from "../appwrite/appwriteConfig";
 import { useNavigate, NavLink } from "react-router-dom";
 import TodoForm from "./TodoForm";
-import Todos from "./Todos";
+// import Todos from "./Todos";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -13,7 +13,6 @@ const Profile = () => {
     const getData = account.get();
     getData.then(
       function (response) {
-        console.log(response);
         setUserDetails(response);
       },
 
@@ -53,7 +52,7 @@ const Profile = () => {
           {/* TODO FORM */}
           <TodoForm />
           {/* TODOS BOX */}
-          <Todos />
+          {/* <Todos /> */}
         </>
       ) : (
         <p className="mt-4">

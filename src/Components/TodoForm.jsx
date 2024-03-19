@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { databases } from "../appwrite/appwriteConfig";
 import { v4 as uuidv4 } from "uuid";
+import Todos from "./Todos";
 
 const TodoForm = () => {
   const [todo, setTodo] = useState("");
+  const [responseState, setResponseState] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,14 +23,14 @@ const TodoForm = () => {
 
     promise.then(
       function (response) {
-        console.log(response);
+        setResponseState(response);
+        setTodo("")
+        // console.log(response);
       },
       function (error) {
         console.log(error);
       }
     );
-
-    e.target.reset();
   };
 
   return (
@@ -44,6 +46,7 @@ const TodoForm = () => {
           id=""
           placeholder="Enter Todo"
           className="border p-2 w-2/3 rounded-md"
+          value={todo}
           onChange={(e) => {
             setTodo(e.target.value);
           }}
@@ -55,6 +58,7 @@ const TodoForm = () => {
           Add Todo
         </button>
       </form>
+      <Todos responseState={responseState} />
     </div>
   );
 };
