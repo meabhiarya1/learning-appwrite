@@ -57,9 +57,9 @@ const Profile = () => {
         </>
       ) : (
         <p className="mt-4">
-          Please Login To see Profile{" "}
+          Please Login to go to Profile{" "}
           <NavLink to="/">
-            <span className="bg-blue-300 p-2 cursor-pointer text-white rounded-md">
+            <span className="bg-blue-500 p-2 cursor-pointer text-white rounded-md">
               Login
             </span>
           </NavLink>

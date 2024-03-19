@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { useState } from "react";
+import { databases } from "../appwrite/appwriteConfig";
 
 const Todos = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div>Todos</div>;
+};
 
-export default Todos
+export default Todos;
